@@ -6,22 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "df0756"
-		},
-		"DLSG2Link_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'DLSG2Link'"
-		},
-		"DataBrickLink_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'DataBrickLink'"
-		},
-		"SQLDB_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'SQLDB'"
-		},
-		"DLSG2Link_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://acc0756.dfs.core.windows.net"
 		}
 	},
 	"variables": {
@@ -62,84 +46,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/DataBrickLink')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqlTable1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "SQLDB",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "medallion",
-						"type": "nvarchar"
-					},
-					{
-						"name": "hack_license",
-						"type": "nvarchar"
-					},
-					{
-						"name": "vendor_id",
-						"type": "nvarchar"
-					},
-					{
-						"name": "rate_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "store_and_fwd_flag",
-						"type": "nvarchar"
-					},
-					{
-						"name": "pickup_datetime",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dropoff_datetime",
-						"type": "nvarchar"
-					},
-					{
-						"name": "passenger_count",
-						"type": "nvarchar"
-					},
-					{
-						"name": "trip_time_in_secs",
-						"type": "nvarchar"
-					},
-					{
-						"name": "trip_distance",
-						"type": "nvarchar"
-					},
-					{
-						"name": "pickup_longitude",
-						"type": "nvarchar"
-					},
-					{
-						"name": "pickup_latitude",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dropoff_longitude",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dropoff_latitude",
-						"type": "nvarchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "TripData"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/SQLDB')]"
 			]
 		},
 		{
@@ -223,25 +129,6 @@
 					}
 				]
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/DLSG2Link')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DLSG2Link')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('DLSG2Link_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('DLSG2Link_accountKey')]"
-					}
-				}
-			},
 			"dependsOn": []
 		},
 		{
@@ -255,22 +142,9 @@
 					"domain": "https://adb-6287535981463010.10.azuredatabricks.net",
 					"accessToken": {
 						"type": "SecureString",
-						"value": "[parameters('DataBrickLink_accessToken')]"
+						"value": "**********"
 					},
 					"existingClusterId": "0828-081345-hefts521"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SQLDB')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('SQLDB_connectionString')]"
 				}
 			},
 			"dependsOn": []

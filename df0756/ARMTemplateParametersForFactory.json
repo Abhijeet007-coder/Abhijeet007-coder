@@ -8,6 +8,9 @@
 		"DLSG2Link_accountKey": {
 			"value": ""
 		},
+		"DataBrickLink_accessToken": {
+			"value": ""
+		},
 		"SQLDB_connectionString": {
 			"value": ""
 		},

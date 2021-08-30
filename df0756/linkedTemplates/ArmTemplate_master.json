@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'DLSG2Link'"
 		},
+		"DataBrickLink_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'DataBrickLink'"
+		},
 		"SQLDB_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SQLDB'"
@@ -48,6 +52,9 @@
 					},
 					"DLSG2Link_accountKey": {
 						"value": "[parameters('DLSG2Link_accountKey')]"
+					},
+					"DataBrickLink_accessToken": {
+						"value": "[parameters('DataBrickLink_accessToken')]"
 					},
 					"SQLDB_connectionString": {
 						"value": "[parameters('SQLDB_connectionString')]"
